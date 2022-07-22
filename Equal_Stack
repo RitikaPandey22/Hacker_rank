@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def stack_sum(h1):
+  sum1=0
+  stack=set()
+  h1.reverse()
+  for i in range(len(h1)):
+    sum1=sum1+h1[i]
+    stack.add(sum1)
+  return stack
+
+def equalStacks(h1, h2, h3):
+    ans1=stack_sum(h1)
+    ans2=stack_sum(h2)
+    ans3=stack_sum(h3)
+    ans1&=ans2
+    ans1&=ans3
+    if(len(ans1)>0):
+      return max(ans1)
+    else:
+      return 0
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n1 = int(first_multiple_input[0])
+
+    n2 = int(first_multiple_input[1])
+
+    n3 = int(first_multiple_input[2])
+
+    h1 = list(map(int, input().rstrip().split()))
+
+    h2 = list(map(int, input().rstrip().split()))
+
+    h3 = list(map(int, input().rstrip().split()))
+
+    result = equalStacks(h1, h2, h3)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
