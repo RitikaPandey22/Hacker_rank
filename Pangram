@@ -1,0 +1,28 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import string
+
+def pangrams(s):
+  s.replace(" ","")
+  set1=set("".join(s.lower()))
+  set2 = set(string.ascii_lowercase)
+  if(set2.issubset(set1)):
+    return "pangram"
+  else:
+    return "not pangram"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = pangrams(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
